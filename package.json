@@ -4,19 +4,19 @@
   "description": "my cool project",
   "main": "./dist/index.js",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
     "build:tsc": "tsc",
     "build": "ncc build src/index.ts -o dist",
     "test": "npm run lint && npm run jest",
     "test:cov": "npm run lint && npm run jest:cov",
-    "lint": "eslint 'src/**/*.ts'",
-    "format": "prettier --write '**/*.{ts,json,md}'",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write .",
     "jest": "jest --detectOpenHandles --forceExit",
     "jest:cov": "jest --coverage --detectOpenHandles --forceExit",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prepare": "husky install"
   },
   "keywords": [
     "actions"
@@ -32,6 +32,7 @@
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^25.3.0",
     "husky": "^7.0.4",
     "jest": "^27.3.1",
     "lint-staged": "^12.1.2",
@@ -40,30 +41,13 @@
     "typescript": "^4.5.2"
   },
   "jest": {
-    "testEnvironment": "node",
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
+    "preset": "ts-jest",
+    "collectCoverageFrom": [
+      "src/**/*.ts"
     ]
   },
   "lint-staged": {
-    "*.{js,json,ts}": [
-      "yarn format",
-      "git add ."
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint && lint-staged"
-    }
+    "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
     "@actions/core": "^1.6.0"
