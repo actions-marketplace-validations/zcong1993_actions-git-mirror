@@ -1,0 +1,71 @@
+{
+  "name": "action-template",
+  "version": "0.0.0",
+  "description": "my cool project",
+  "main": "./dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build:tsc": "tsc",
+    "build": "ncc build src/index.ts -o dist",
+    "test": "npm run lint && npm run jest",
+    "test:cov": "npm run lint && npm run jest:cov",
+    "lint": "eslint 'src/**/*.ts'",
+    "format": "prettier --write '**/*.{ts,json,md}'",
+    "jest": "jest --detectOpenHandles --forceExit",
+    "jest:cov": "jest --coverage --detectOpenHandles --forceExit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "actions"
+  ],
+  "types": "./dist/index.d.ts",
+  "author": "zcong1993",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.10",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "husky": "^7.0.4",
+    "jest": "^27.3.1",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.4.1",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.5.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,json,ts}": [
+      "yarn format",
+      "git add ."
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint && lint-staged"
+    }
+  },
+  "dependencies": {
+    "@actions/core": "^1.6.0"
+  }
+}
