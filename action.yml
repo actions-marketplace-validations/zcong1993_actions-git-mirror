@@ -1,12 +1,19 @@
-name: 'Action'
-description: 'Action template'
+name: 'Git Mirror'
+description: 'Mirror a git repository.'
 author: 'zcong1993'
 branding:
   icon: 'message-square'
   color: 'blue'
 inputs:
-  body:
-    description: 'Body to echo'
+  repo-token:
+    description: 'Token for the repository. Can be passed in using `{{ secrets.GITHUB_TOKEN }}`.'
+    required: false
+    default: ${{ github.token }}
+  dest-repo:
+    description: 'Dest repo url'
+    required: false
+  dest-token:
+    description: 'Dest repo token for oauth2 auth'
     required: false
 
 runs:
