@@ -1,4 +1,4 @@
-name: 'Git Mirror'
+name: 'Git Mirror Action'
 description: 'Mirror a git repository.'
 author: 'zcong1993'
 branding:
