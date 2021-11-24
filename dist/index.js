@@ -2827,12 +2827,28 @@ exports.debug = debug; // for test
 
 "use strict";
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const url_1 = __nccwpck_require__(310);
-const core_1 = __importDefault(__nccwpck_require__(453));
+const core = __importStar(__nccwpck_require__(453));
 const exec_1 = __nccwpck_require__(993);
 const currentRepo = `https://github.com/${process.env.GITHUB_REPOSITORY}.git`;
 const addOauth2Token = (repoUrl, token) => {
@@ -2844,9 +2860,9 @@ const addOauth2Token = (repoUrl, token) => {
 const workdir = 'work';
 async function run() {
     try {
-        const destRepo = core_1.default.getInput('dest-repo', { required: true });
-        const destToken = core_1.default.getInput('dest-token', { required: true });
-        const repoToken = core_1.default.getInput('repo-token');
+        const destRepo = core.getInput('dest-repo', { required: true });
+        const destToken = core.getInput('dest-token', { required: true });
+        const repoToken = core.getInput('repo-token');
         if (!destRepo.startsWith('https://')) {
             throw new Error('only support https repo type now');
         }
@@ -2863,8 +2879,8 @@ async function run() {
         });
     }
     catch (error) {
-        core_1.default.error(error);
-        core_1.default.setFailed(error.message);
+        core.error(error);
+        core.setFailed(error.message);
     }
 }
 run();

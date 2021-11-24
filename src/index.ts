@@ -1,5 +1,5 @@
 import { URL } from 'url'
-import core from '@actions/core'
+import * as core from '@actions/core'
 import { exec } from '@actions/exec'
 
 const currentRepo = `https://github.com/${process.env.GITHUB_REPOSITORY}.git`
