@@ -1,4 +1,4 @@
-import { URL } from 'node:url'
+import { URL } from 'url'
 import core from '@actions/core'
 import { exec } from '@actions/exec'
 

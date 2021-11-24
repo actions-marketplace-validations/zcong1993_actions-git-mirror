@@ -2831,12 +2831,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const node_url_1 = __nccwpck_require__(41);
+const url_1 = __nccwpck_require__(310);
 const core_1 = __importDefault(__nccwpck_require__(453));
 const exec_1 = __nccwpck_require__(993);
 const currentRepo = `https://github.com/${process.env.GITHUB_REPOSITORY}.git`;
 const addOauth2Token = (repoUrl, token) => {
-    const u = new node_url_1.URL(repoUrl);
+    const u = new url_1.URL(repoUrl);
     u.username = 'oauth2';
     u.password = token;
     return u.toString();
@@ -2928,14 +2928,6 @@ module.exports = require("net");
 
 /***/ }),
 
-/***/ 41:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("node:url");
-
-/***/ }),
-
 /***/ 37:
 /***/ ((module) => {
 
@@ -2973,6 +2965,14 @@ module.exports = require("timers");
 
 "use strict";
 module.exports = require("tls");
+
+/***/ }),
+
+/***/ 310:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("url");
 
 /***/ }),
 
