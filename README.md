@@ -13,7 +13,7 @@ git push --mirror https://github.com/exampleuser/new-repository.git
 ## Usage
 
 ```yaml
-- uses: zcong1993/actions-git-mirror
+- uses: zcong1993/actions-git-mirror@master
   with:
     dest-repo: https://gitee.com/owner/some-dest-repo.git
     dest-token: ${{ secrets.DEST_TOKEN }}
